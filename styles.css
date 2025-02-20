@@ -37,8 +37,9 @@ label {
     display: block;
 }
 
+/* EL estilo de los campos */
 input[type="text"],
-input[type="email"] {
+input[type="email"]{
     width: 100%;
     padding: 10px;
     margin-bottom: 15px;
@@ -46,6 +47,31 @@ input[type="email"] {
     border-radius: 4px;
     font-size: 14px;
 }
+/*el ojito */
+.password-container {
+    display: flex;
+    align-items: center;
+}
+.eye-icon {
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ddd;
+    border-radius: 3px;
+    font-size: 18px;
+    margin-left: 10px;
+    cursor: pointer;
+}
+
+input[type="password"]{
+    width: 85%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 14px;
+}
+
+
 
 button {
     background-color: #4CAF50;

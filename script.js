@@ -1,9 +1,11 @@
 document.addEventListener('DOMContentLoaded', function () {
+
+    console.log('El documento está completamente cargado.');
     const form = document.getElementById('registration-form');
     const emailInput = document.getElementById('email');
     const emailError = document.getElementById('emailError');
 
-    const successMessage = document.createElement('span'); // Creamos un span para el mensaje de éxito
+    const successMessage = document.createElement('span'); // Mensaje de éxito
 
     // Agregamos el span al formulario (lo ponemos al final del formulario)
     form.appendChild(successMessage);
@@ -34,12 +36,17 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     });
 
-    // Función para validar el formato del correo electrónico
-    function validateEmail(email) {
-        // Asegurarnos de que el correo contenga al menos un @ y un dominio
-        const emailPattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
-        return emailPattern.test(email);
-    }
+
 
     
+
+
+ 
+    
 });
+   // Función para validar el formato del correo electrónico
+   function validateEmail(email) {
+    // Asegurarnos de que el correo contenga al menos un @ y un dominio
+    const emailPattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
+    return emailPattern.test(email);
+}
