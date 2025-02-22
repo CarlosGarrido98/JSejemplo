@@ -32,7 +32,8 @@
         <p class="icono-ojo" onclick="contraEmoji('password', this)">👁️</p>
     </div>
     <span class="error-message" id="passwordError"></span>
-    
+    <button type="button" id="generar-contra">Crear Contraseña</button>
+    <br><br>
     <!-- Barrita de Fuerza -->
     <p id="texto-fuerza">Fuerza: </p>
     <div id="barra-fuerza">
@@ -50,7 +51,24 @@
     <span class="error-message" id="confirmPasswordError"></span>
 
 
+    <!-- Dirección (Opcional) -->
+    <label for="address">Dirección:</label>
+    <input type="text" id="address" name="address">
 
+    <!-- País (Opcional) -->
+
+    <label for="country">País:</label>
+    <div class="select-container">
+        <select id="country" name="country">
+            <option value="">Seleccione...</option>
+            <option value="es">España</option>
+            <option value="mx">México</option>
+            <option value="ar">Argentina</option>
+            <!-- Más países -->
+        </select>
+    </div>
+
+    <br><br>
 
 
     

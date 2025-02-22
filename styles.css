@@ -115,3 +115,47 @@ button:hover {
 .debil { background: red; }
 .medio { background: orange; }
 .fuerte { background: green; }
+
+/* Contenedor del select */
+.select-container {
+    position: relative;
+    display: inline-block;
+    width: 100%;
+}
+
+/* Estilo del select */
+.select-container select {
+    width: 100%;
+    padding: 10px;
+    border-radius: 5px;
+    border: 2px solid #ddd;
+    font-size: 16px;
+    background-color: white;
+    appearance: none; /* Oculta la flecha por defecto */
+    cursor: pointer;
+    transition: border-color 0.3s ease;
+}
+
+/* Agregar icono de flecha personalizada */
+.select-container::after {
+    content: "▼";
+    position: absolute;
+    right: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 14px;
+    color: #777;
+    pointer-events: none; /* Para que no interfiera con los clics */
+}
+
+/* Efecto al pasar el mouse */
+.select-container select:hover {
+    border-color: #4CAF50;
+}
+
+/* Efecto al seleccionar */
+.select-container select:focus {
+    outline: none;
+    border-color: #4CAF50;
+    box-shadow: 0 0 5px rgba(76, 175, 80, 0.5);
+}

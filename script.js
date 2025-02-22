@@ -11,8 +11,12 @@ document.addEventListener("DOMContentLoaded", function () {
     const mensajeExito = document.createElement("span"); // Mensaje de éxito
     form.appendChild(mensajeExito); // Agregar mensaje al formulario
 
-    //Aqui Actualizamos la barra de Fuerza de La contraseña 
+    //Aquí Actualizamos la barra de Fuerza de La contraseña 
     passwordInput.addEventListener("input", evaluarFuerza);
+
+    //Aquí Actualizamos la Contraseña Generada 
+    document.getElementById("generar-contra").addEventListener("click", generarContra);
+
 
     // Evento de envío del formulario
     form.addEventListener("submit", function (event) {
@@ -84,7 +88,7 @@ function contraEmoji(inputId,iconElement){
 
 }
 
-//Funcion Barra 
+//Funcion Barra de Fuerza de Contraseña
 function evaluarFuerza() {
 
     const contraInput = document.getElementById("password");
@@ -125,4 +129,20 @@ function evaluarFuerza() {
         textoFuerza.textContent = "Fuerza:";
         textoFuerza.style.color = "black";
     }
+}
+
+
+function generarContra() {
+
+    const caracteres = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*()-_=+";
+    let passwordGenerada = "";
+    const longitud = 12; // Longitud de la contraseña
+
+    for (let i = 0; i < longitud; i++) {
+        const randomIndex = Math.floor(Math.random() * caracteres.length);
+        passwordGenerada += caracteres[randomIndex];
+    }
+
+    document.getElementById("password").value = passwordGenerada;
+    evaluarFuerza();
 }
