@@ -42,8 +42,14 @@ document.addEventListener("DOMContentLoaded", function () {
             mensajeExito.textContent = "¡Todo está correcto! El formulario se ha enviado correctamente.";
             mensajeExito.style.color = "green";
         }
+
+    
+
+        
+
     });
 
+ 
    
     // Función para mostrar errores
     function mostrarError(spanError, input, mensaje) {
