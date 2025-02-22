@@ -47,12 +47,13 @@ input[type="email"]{
     border-radius: 4px;
     font-size: 14px;
 }
+
 /*el ojito */
-.password-container {
+.contenedor-pass {
     display: flex;
     align-items: center;
 }
-.eye-icon {
+.icono-ojo {
     padding: 10px;
     margin-bottom: 15px;
     border: 1px solid #ddd;
@@ -96,3 +97,21 @@ button:hover {
     margin-top: -10px;
     margin-bottom: 15px;
 }
+
+
+
+#barra-fuerza {
+    width: 100%;
+    height: 10px;
+    background: lightgray;
+    margin-top: 5px;
+    border-radius: 5px;
+}
+#fuerza-indicador {
+    height: 100%;
+    width: 0%;
+    transition: width 0.3s;
+}
+.debil { background: red; }
+.medio { background: orange; }
+.fuerte { background: green; }

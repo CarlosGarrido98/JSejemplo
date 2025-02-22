@@ -27,19 +27,33 @@
 
     <!-- Contraseña -->
     <label for="password">Contraseña:</label>
-    <div class="password-container">
-        <input type="password" id="password" name="password" required minlength="8">
-        <p class="eye-icon" onclick="togglePassword()">👁️</p>
+    <div class="contenedor-pass">
+        <input type="password" id="password" name="password" required minlength="8" >
+        <p class="icono-ojo" onclick="contraEmoji('password', this)">👁️</p>
     </div>
     <span class="error-message" id="passwordError"></span>
     
+    <!-- Barrita de Fuerza -->
+    <p id="texto-fuerza">Fuerza: </p>
+    <div id="barra-fuerza">
+        <div id="fuerza-indicador"></div>
+    </div>
+    <span class="error-message" id="passwordError"></span>
 
+    <br><br>
     <!-- Confirmación de contraseña -->
     <label for="confirmPassword">Confirmar contraseña:</label>
+    <div class="contenedor-pass">
     <input type="password" id="confirmPassword" name="confirmPassword" required minlength="8">
+    <p class="icono-ojo" onclick="contraEmoji('confirmPassword',this)">👁️</p>
+    </div>
     <span class="error-message" id="confirmPasswordError"></span>
 
 
+
+
+
+    
     <!-- Botón de envío -->
     <button type="submit" >Registrarse</button>
     </form>
