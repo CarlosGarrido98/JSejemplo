@@ -1,5 +1,5 @@
 document.addEventListener("DOMContentLoaded", function () {
-    
+
     console.log("El documento está completamente cargado.");
 
     const form = document.getElementById("registration-form");
@@ -8,6 +8,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const passwordInput = document.getElementById("password");
     const confirmPasswordInput = document.getElementById("confirmPassword");
     const confirmPasswordError = document.getElementById("confirmPasswordError");
+
 
     const mensajeExito = document.createElement("span"); // Mensaje de éxito
     form.appendChild(mensajeExito); // Agregar mensaje al formulario
@@ -153,3 +154,79 @@ function generarContra() {
     document.getElementById("password").value = passwordGenerada;
     evaluarFuerza();
 }
+
+
+
+
+// Captcha 
+
+let captcha = document.querySelector(".captcha");
+let refresh_button = document.querySelector(".refresh_button");
+let text = document.querySelector(".text");
+let submit = document.querySelector(".submit");
+let message = document.querySelector(".message");
+
+let string = "123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
+
+let generated_value = "";
+
+window.addEventListener("load" , generate_captcha);
+refresh_button.addEventListener("click" , generate_captcha);
+
+let letters = "";
+
+//Funcion para generar el Captcha
+
+function generate_captcha(){
+    message.style.display = "none";
+
+    generated_value = "";
+    for (let i = 0; i < 5; i++) {
+        generated_value += string[Math.floor(Math.random() * string.length)];
+        // captcha.innerHTML = generated_value;
+        captcha.innerHTML = generated_value.split("").map((letter , index) => `<p>`+ letter +`</p>`).join("");
+    }
+
+    letters = captcha.querySelectorAll("p");
+
+    let random_number1 = Math.floor(Math.random() * 5);
+    let random_number2 = Math.floor(Math.random() * 5);
+    let random_number3 = Math.floor(Math.random() * 5);
+
+    letters[random_number1].style.margin = "0px 3px";
+    letters[random_number1].style.rotate = "30deg";
+
+    letters[random_number2].style.margin = "0px 4px";
+    letters[random_number2].style.rotate = "-20deg";
+    letters[random_number2].style.fontWeight = "bold";
+    letters[random_number2].style.transform = "translateY(10px)";
+
+    letters[random_number3].style.margin = "0px 4px";
+    letters[random_number3].style.rotate = "35deg";
+    letters[random_number3].style.transform = "translateY(-10px)";
+}
+
+letters = document.querySelectorAll("p");
+
+// Validar el Captcha
+submit.onclick = function(){
+    let combined_letters = "";
+
+    for (let c = 0; c < letters.length; c++) {
+        const element = letters[c];
+        combined_letters += element.innerText;
+        
+    }
+    if(text.value === combined_letters){
+        message.style.display = "block";
+        message.style.color = "green";
+        message.innerHTML = "Captcha Correcto ";
+    }else{
+        message.style.display = "block";
+        message.style.color = "red";
+        message.innerHTML = "Introduzca el Captcha Correctamente";
+    }
+}
+
+
+
