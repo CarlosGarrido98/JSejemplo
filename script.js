@@ -1,4 +1,5 @@
 document.addEventListener("DOMContentLoaded", function () {
+    
     console.log("El documento está completamente cargado.");
 
     const form = document.getElementById("registration-form");
