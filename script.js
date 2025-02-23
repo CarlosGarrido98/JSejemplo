@@ -22,6 +22,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // Evento de envío del formulario
     form.addEventListener("submit", function (event) {
+
         event.preventDefault(); // Evitar envío si hay errores
         resetErrors();
 
@@ -39,15 +40,18 @@ document.addEventListener("DOMContentLoaded", function () {
             formValido = false;
         }
 
+        if(!verificarCaptcha()){
+            formValido=false;
+        }
+
         // Si el formulario es válido, mostrar mensaje de éxito
         if (formValido) {
             mensajeExito.textContent = "¡Todo está correcto! El formulario se ha enviado correctamente.";
             mensajeExito.style.color = "green";
         }
 
-    
 
-        
+    
 
     });
 
@@ -209,7 +213,8 @@ function generate_captcha(){
 letters = document.querySelectorAll("p");
 
 // Validar el Captcha
-submit.onclick = function(){
+
+ function verificarCaptcha(){
     let combined_letters = "";
 
     for (let c = 0; c < letters.length; c++) {
@@ -221,11 +226,16 @@ submit.onclick = function(){
         message.style.display = "block";
         message.style.color = "green";
         message.innerHTML = "Captcha Correcto ";
+        return true;
+
     }else{
         message.style.display = "block";
         message.style.color = "red";
         message.innerHTML = "Introduzca el Captcha Correctamente";
+        return false;
     }
+
+   
 }
 
 
