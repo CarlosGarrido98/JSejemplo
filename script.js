@@ -1,3 +1,6 @@
+/**
+ * Se ejecuta cuando el DOM ha sido completamente cargado.
+ */
 document.addEventListener("DOMContentLoaded", function () {
 
     console.log("El documento está completamente cargado.");
@@ -19,8 +22,10 @@ document.addEventListener("DOMContentLoaded", function () {
     //Aquí Actualizamos la Contraseña Generada 
     document.getElementById("generar-contra").addEventListener("click", generarContra);
 
-
-    // Evento de envío del formulario
+    /**
+     * Maneja el envío del formulario y valida los campos.
+     * @param {Event} event - Evento de envío del formulario.
+     */
     form.addEventListener("submit", function (event) {
 
         event.preventDefault(); // Evitar envío si hay errores
@@ -56,14 +61,20 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 
  
-   
-    // Función para mostrar errores
+     /**
+     * Muestra un mensaje de error en un campo.
+     * @param {HTMLElement} spanError - Elemento donde se mostrará el error.
+     * @param {HTMLInputElement} input - Campo de entrada con el error.
+     * @param {string} mensaje - Mensaje de error.
+     */
     function mostrarError(spanError, input, mensaje) {
         spanError.textContent = mensaje;
         input.classList.add("error");
     }
 
-    // Función para resetear errores
+    /**
+     * Reinicia los mensajes de error en el formulario.
+     */
     function resetErrors() {
         emailError.textContent = "";
         confirmPasswordError.textContent = "";
@@ -77,15 +88,22 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
 
-// Función para validar el formato del correo electrónico
+    /**
+     * Valida el formato de un correo electrónico.
+     * @param {string} email - Correo electrónico a validar.
+     * @returns {boolean} True si el correo es válido, False en caso contrario.
+     */
    function validarEmail(email) {
     // Asegurarnos de que el correo contenga al menos un @ y un dominio
     const emailPattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
     return emailPattern.test(email);
 }
 
-
-//Funcion para ver la contraseña y la confirmacion de contraseña a voluntad 
+/**
+ * Alterna la visibilidad de la contraseña en un campo de entrada.
+ * @param {string} inputId - ID del campo de entrada.
+ * @param {HTMLElement} iconElement - Elemento del icono que cambia.
+ */
 function contraEmoji(inputId,iconElement){
     const input = document.getElementById(inputId);
 
@@ -100,7 +118,10 @@ function contraEmoji(inputId,iconElement){
 
 }
 
-//Funcion Barra de Fuerza de Contraseña
+
+/**
+ * Evalúa la fuerza de una contraseña y actualiza la barra de indicador.
+ */
 function evaluarFuerza() {
 
     const contraInput = document.getElementById("password");
@@ -143,9 +164,10 @@ function evaluarFuerza() {
     }
 }
 
-
+/**
+ * Genera una contraseña aleatoria y la establece en el campo de contraseña.
+ */
 function generarContra() {
-
     const caracteres = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*()-_=+";
     let passwordGenerada = "";
     const longitud = 12; // Longitud de la contraseña
@@ -160,60 +182,63 @@ function generarContra() {
 }
 
 
-
-
 // Captcha 
+/**
+ * Genera un captcha aleatorio.
+ */
+    let captcha = document.querySelector(".captcha");
+    let refresh_button = document.querySelector(".refresh_button");
+    let text = document.querySelector(".text");
+    let submit = document.querySelector(".submit");
+    let message = document.querySelector(".message");
 
-let captcha = document.querySelector(".captcha");
-let refresh_button = document.querySelector(".refresh_button");
-let text = document.querySelector(".text");
-let submit = document.querySelector(".submit");
-let message = document.querySelector(".message");
+    let string = "123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
 
-let string = "123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
+    let generated_value = "";
 
-let generated_value = "";
+    window.addEventListener("load" , generate_captcha);
+    refresh_button.addEventListener("click" , generate_captcha);
 
-window.addEventListener("load" , generate_captcha);
-refresh_button.addEventListener("click" , generate_captcha);
+    let letters = "";
 
-let letters = "";
-
-//Funcion para generar el Captcha
+    //Funcion para generar el Captcha
 
 function generate_captcha(){
-    message.style.display = "none";
+        message.style.display = "none";
 
-    generated_value = "";
-    for (let i = 0; i < 5; i++) {
-        generated_value += string[Math.floor(Math.random() * string.length)];
-        // captcha.innerHTML = generated_value;
-        captcha.innerHTML = generated_value.split("").map((letter , index) => `<p>`+ letter +`</p>`).join("");
-    }
+        generated_value = "";
+        for (let i = 0; i < 5; i++) {
+            generated_value += string[Math.floor(Math.random() * string.length)];
+            // captcha.innerHTML = generated_value;
+            captcha.innerHTML = generated_value.split("").map((letter , index) => `<p>`+ letter +`</p>`).join("");
+        }
 
-    letters = captcha.querySelectorAll("p");
+        letters = captcha.querySelectorAll("p");
 
-    let random_number1 = Math.floor(Math.random() * 5);
-    let random_number2 = Math.floor(Math.random() * 5);
-    let random_number3 = Math.floor(Math.random() * 5);
+        let random_number1 = Math.floor(Math.random() * 5);
+        let random_number2 = Math.floor(Math.random() * 5);
+        let random_number3 = Math.floor(Math.random() * 5);
 
-    letters[random_number1].style.margin = "0px 3px";
-    letters[random_number1].style.rotate = "30deg";
+        letters[random_number1].style.margin = "0px 3px";
+        letters[random_number1].style.rotate = "30deg";
 
-    letters[random_number2].style.margin = "0px 4px";
-    letters[random_number2].style.rotate = "-20deg";
-    letters[random_number2].style.fontWeight = "bold";
-    letters[random_number2].style.transform = "translateY(10px)";
+        letters[random_number2].style.margin = "0px 4px";
+        letters[random_number2].style.rotate = "-20deg";
+        letters[random_number2].style.fontWeight = "bold";
+        letters[random_number2].style.transform = "translateY(10px)";
 
-    letters[random_number3].style.margin = "0px 4px";
-    letters[random_number3].style.rotate = "35deg";
-    letters[random_number3].style.transform = "translateY(-10px)";
+        letters[random_number3].style.margin = "0px 4px";
+        letters[random_number3].style.rotate = "35deg";
+        letters[random_number3].style.transform = "translateY(-10px)";
 }
 
 letters = document.querySelectorAll("p");
 
 // Validar el Captcha
-
+/**
+ * Verifica si el captcha ingresado es correcto.
+ * @returns {boolean} True si el captcha es correcto, False en caso contrario.
+ */
  function verificarCaptcha(){
     let combined_letters = "";
 
