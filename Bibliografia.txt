@@ -1,0 +1,2 @@
+captcha:
+https://maketechstuffs.blogspot.com/2023/12/random-captcha-generator-using-javascript.html

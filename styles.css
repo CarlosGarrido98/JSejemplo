@@ -3,6 +3,7 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    
 }
 
 h1 {
@@ -19,7 +20,7 @@ body {
     justify-content: center;
     flex-direction: column;
     align-items: center;
-    height: 100vh;
+    height: 205vh;
     background-color: #f4f4f9;
 }
 
