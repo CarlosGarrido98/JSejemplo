@@ -9,16 +9,21 @@
 </head>
 <body>
     <header> <h1>Formulario de Registro</h1>  </header>
-    
+
     <form id="registration-form">
+
     <!-- Nombre -->
     <label for="name">Nombre:</label>
-    <input type="text" id="name" name="name" required maxlength="50" pattern="^[A-Za-zÁÉÍÓÚáéíóúÑñ ]+$" title="Solo se permiten letras!">
+    <!-- pattern="^[A-Za-zÁÉÍÓÚáéíóúÑñ ]+$" title="Solo se permiten letras!" -->
+    <input type="text" id="name" name="name" required maxlength="50" >
     <span class="error-message" id="nameError"></span>
+
+
    <!-- Apellidos-->
     <label for="lastname"> Apellidos:</label>
-    <input type="text" id="lastname" name="lastname" required maxlength="50"pattern="^[A-Za-zÁÉÍÓÚáéíóúÑñ ]+$" title="Solo se permiten letras!">
+    <input type="text" id="lastname" name="lastname" required maxlength="50">
     <span class="error-message" id="lastnameError"></span>
+
    <!-- Correo electrónico  -->
     <label for="email">Correo electrónico:</label>
     <input type="email" id="email" name="email" required>
@@ -26,7 +31,6 @@
 
     <!-- Contraseña -->
     <label for="password">Contraseña:</label>
-    <p>La contraseña debe tener al menos 8 caracteres, incluyendo una mayúscula, una minúscula, un número y un carácter especial.</p>
     <div class="contenedor-pass">
         <input type="password" id="password" name="password" required minlength="8" >
         <p class="icono-ojo" onclick="contraEmoji('password', this)">👁️</p>
