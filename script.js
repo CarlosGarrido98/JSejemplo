@@ -29,33 +29,54 @@ document.addEventListener("DOMContentLoaded", function () {
 
     //Aquí Actualizamos la Contraseña Generada 
     document.getElementById("generar-contra").addEventListener("click", generarContra);
+/**
+ * Agrega un evento que valida el campo del nombre cuando pierde el foco.
+ */
+nameInput.addEventListener("blur", function () {
+    validarCampo(nameInput, nameError);
+});
+
+/**
+ * Agrega un evento que valida el campo del apellido cuando pierde el foco.
+ */
+lastNameInput.addEventListener("blur", function () {
+    validarCampo(lastNameInput, lastNameError);
+});
+
+/**
+ * Agrega un evento que valida el campo de correo electrónico cuando pierde el foco.
+ */
+emailInput.addEventListener("blur", function () {
+    validarCampoEmail(emailInput, emailError);
+});
+
+/**
+ * Agrega un evento que muestra los requisitos de la contraseña cuando pierde el foco.
+ */
+passwordInput.addEventListener("blur", function () {
+    mostrarRequisitos(passwordInput, passwordError);  
+});
+
+/**
+ * Agrega un evento que valida la confirmación de la contraseña en cada entrada de texto.
+ */
+confirmPasswordInput.addEventListener("input", function () {
+    confirmacionContra(passwordInput, confirmPasswordInput, confirmPasswordError);
+});
+
+/**
+ * Agrega un evento que verifica la confirmación de la contraseña al escribir en el campo de contraseña.
+ */
+passwordInput.addEventListener("input", function () {
+    confirmacionContra(passwordInput, confirmPasswordInput, confirmPasswordError);
+});
 
 
-    nameInput.addEventListener("blur", function () {
-        validarCampo(nameInput, nameError);
-    });
-
-    lastNameInput.addEventListener("blur", function () {
-        validarCampo(lastNameInput, lastNameError);
-    });
-
-    emailInput.addEventListener("blur", function () {
-        validarCampoEmail(emailInput, emailError);
-    });
-
-
-    passwordInput.addEventListener("blur", function () {
-        mostrarRequisitos(passwordInput, passwordError);  
-    });
-
-    confirmPasswordInput.addEventListener("input", function () {
-        confirmacionContra(passwordInput, confirmPasswordInput, confirmPasswordError);
-    });
-
-    passwordInput.addEventListener("input", function () {
-        confirmacionContra(passwordInput, confirmPasswordInput, confirmPasswordError);
-    });
-
+/**
+ * Agrega un evento al formulario para manejar el envío, previniendo el comportamiento por defecto y verificando el captcha.
+ * 
+ * @param {Event} event - Evento del formulario.
+ */
 
     form.addEventListener("submit", function (event) {
         event.preventDefault(); // Evita que el formulario se envíe
@@ -131,6 +152,7 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
 
+    //Funcion para ver si coinciden las contraseñas 
     function confirmacionContra(pass,repass,error){
 
         if(repass.value.trim() === ""){
